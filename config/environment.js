@@ -2,10 +2,15 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'library-app',
-    environment: environment,
-    baseURL: '/',
-    locationType: 'auto',
+        modulePrefix: 'library-app',
+        environment: environment,
+        contentSecurityPolicy: {
+            'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com"
+        },
+        firebase: 'https://libraryapp-1.firebaseio.com/',
+        baseURL: '/',
+        locationType: 'auto',
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

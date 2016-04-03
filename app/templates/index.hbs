@@ -1,0 +1,48 @@
+<h1>Home Page</h1>
+
+<div class="jumbotron text-center">
+    <h1>Coming Soon</h1>
+
+    <br/><br/>
+
+    <p>Don't miss our launch date, request an invitation now.</p>
+
+    <div class="form-horizontal form-group form-group-lg row">
+        <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-1 col-md-5 col-md-offset-2">
+            {{input type="email" value=emailAddress class="form-control" placeholder="Please type your e-mail address." autofocus="autofocus"}}
+        </div>
+        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-4 col-md-3">
+            <button class="btn btn-primary btn-lg btn-block" {{action 'saveInvitation'}} disabled={{isDisabled}}>Request invitation</button>
+        </div>
+
+    </div>
+
+    {{#if responseMessage}}
+      <div class="alert alert-success">{{responseMessage}}</div>
+    {{/if}}
+
+    <br/><br/>
+
+</div>
+
+<h2>List</h2>
+
+<div class="row">
+  {{#each model as |library|}}
+    <div class="col-md-4">
+      <div class="panel panel-default library-item">
+          <div class="panel-heading">
+              <h3 class="panel-title">{{library.name}}</h3>
+          </div>
+          <div class="panel-body">
+              <p>Address: {{library.address}}</p>
+              <p>Phone: {{library.phone}}</p>
+          </div>
+          <div class="panel-footer text-right">
+              {{#link-to 'libraries.edit' library.id class='btn btn-success btn-xs'}}Edit{{/link-to}}
+              <button class="btn btn-danger btn-xs" {{action 'deleteLibrary' library}}>Delete</button>
+          </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
