@@ -1,3 +1,4 @@
+// app/controllers/admin/seeder.js
 import Ember from 'ember';
 import Faker from 'faker';
 
